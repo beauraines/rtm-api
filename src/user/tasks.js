@@ -4,9 +4,9 @@ const _tasks = require('../task/helper.js');
 const _lists = require('../list/helper.js');
 const taskIds = require('../utils/taskIds.js');
 const errors = require('../response/error.js');
-const fetch = require('node-fetch');
 const sign = require('../utils/sign')
 const { getListId, getTaskId, getTaskSeriesId } = require('../utils/taskIds');
+const { callAPI, formQuery, buildUrl } = require('../utils/fetch')
 const RTMTask = require('../task/index.js');
 
 /**
@@ -93,33 +93,7 @@ module.exports = function(user) {
    * @return {JSON} 
    */
   rtn.rtmFetch = async function(filter) {
-    // console.log(user)
-    // TODO move this to the api calling module
-    let conf = {
-      url:"https://api.rememberthemilk.com",
-      apiKey:user._client._apiKey,
-      apiSecret:user._client._apiSecret,
-      perms:user._client._perms,
-      apiToken:user._authToken,
-      userId:user.id
-    }
-
-    // TODO move this to the API calling module
-    let path = '/services/rest/'
-    let query = {
-      filter: filter ,
-      auth_token: conf.apiToken,
-      method: 'rtm.tasks.getList',
-      api_key: conf.apiKey,
-      v: 2,
-      format: 'json'
-    }
-
-
-    let apiSig=sign(query,{secret:conf.apiSecret})
-
-    // _formQuery needs to be loaded from a helper
-    let url = `${conf.url}${path}?${_formQuery(query)}&api_sig=${apiSig}`
+    let url = buildUrl(user,filter)
     let response = await callAPI(url);
     return await response.rsp.tasks?.list
   }
@@ -134,40 +108,15 @@ module.exports = function(user) {
    */
   rtn.rtmIndexFetchTask = async function(index,filter) {
 
-    // TODO move this to the api calling module
-    let conf = {
-      url:"https://api.rememberthemilk.com",
-      apiKey:user._client._apiKey,
-      apiSecret:user._client._apiSecret,
-      perms:user._client._perms,
-      apiToken:user._authToken,
-      userId:user.id
-    }
-
-    // TODO move this to the API calling module
-    let path = '/services/rest/'
-    let query = {
-      filter: filter ,
-      auth_token: conf.apiToken,
-      method: 'rtm.tasks.getList',
-      api_key: conf.apiKey,
-      v: 2,
-      format: 'json'
-    }
-
-
-    let apiSig=sign(query,{secret:conf.apiSecret})
-
-    // _formQuery needs to be loaded from a helper
-    let url = `${conf.url}${path}?${_formQuery(query)}&api_sig=${apiSig}`
-    let response = await callAPI(url);
+    let url = buildUrl(user,filter)
+    let response = await callAPI(url,user);
     const lists =  response.rsp.tasks?.list
 
 
     // index to ids
-    let listId = getListId(conf.userId,index)
-    let taskSeriesId = getTaskSeriesId(conf.userId,index)
-    let taskId = getTaskId(conf.userId,index)
+    let listId = getListId(user.id,index)
+    let taskSeriesId = getTaskSeriesId(user.id,index)
+    let taskId = getTaskId(user.id,index)
     // console.log({listId,taskSeriesId,taskId})
     // TODO if undefined return error
     if (listId == undefined || taskSeriesId == undefined || taskId == undefined) {
@@ -194,45 +143,6 @@ module.exports = function(user) {
     }
     return {err,task:returnTask}
   }
-
-// TODO require from utils/get.js or the new fetch helper
-  /**
- * Generate a URI Encoded query string from the parameters set of
- * key/value pairs
- * @param {object} params Object containing the key/value parameters
- * @returns {string} URL Encoded query string
- * @private
- */
-function _formQuery(params) {
-  let parts = [];
-  for ( let key in params ) {
-    if ( params.hasOwnProperty(key) ) {
-      parts.push(encodeURIComponent(key) + "=" + encodeURIComponent(params[key]));
-    }
-  }
-  return parts.join("&");
-}
-
-// TODO move to new fetch helper
-/**
- * 
- * @param {string} url fully formed url to call
- * @returns JSON response
- */
- async function callAPI(url) {
-  try {
-      const response = await fetch(url);
-      if (await response.ok) {
-          return await response.json();
-      } else {
-          // TODO improve this error message
-          console.error('There was an error');
-      }
-  } catch (error) {
-      console.error(error)
-  }
-}
-
 
   /**
    * Get the RTMTask specified by its index. While this will return only the matching RTMTask,
