@@ -117,31 +117,26 @@ module.exports = function(user) {
     let listId = getListId(user.id,index)
     let taskSeriesId = getTaskSeriesId(user.id,index)
     let taskId = getTaskId(user.id,index)
-    // console.log({listId,taskSeriesId,taskId})
-    // TODO if undefined return error
+
     if (listId == undefined || taskSeriesId == undefined || taskId == undefined) {
       return {err: {code: -3}} // Not sure why this is the code
     }
-        // filter the response for the index
-    // TODO refactor this, maybe return RTMTask
+    // filter the response for the matching index
     let taskList = lists.filter(x => x.id == listId)[0].taskseries
     let taskSeries = taskList ? taskList.filter(x => x.id == taskSeriesId)[0] : null
-    // console.log(taskSeries)
-    // ONly return the single task from the series.  This is usually turned into an RTM task
     taskSeries
       ? taskSeries.task = taskSeries.task.filter(x => x.id == taskId)[0]
       : null
 
-    // console.log(taskSeries.task)
-    // console.log({user:user.id,listId,taskSeries,task:taskSeries.task})
+
     let err
-    let returnTask
+    let task
     if (!taskSeries ) {
       err = {code: -3} // Not sure why this is the code 
     }  else {
-      returnTask = new RTMTask(user.id,listId,taskSeries,taskSeries.task)
+      task = new RTMTask(user.id,listId,taskSeries,taskSeries.task)
     }
-    return {err,task:returnTask}
+    return {err,task}
   }
 
   /**
