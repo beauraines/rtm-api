@@ -4,6 +4,10 @@ const _tasks = require('../task/helper.js');
 const _lists = require('../list/helper.js');
 const taskIds = require('../utils/taskIds.js');
 const errors = require('../response/error.js');
+const fetch = require('node-fetch');
+const sign = require('../utils/sign')
+const { getListId, getTaskId, getTaskSeriesId } = require('../utils/taskIds');
+const RTMTask = require('../task/index.js');
 
 /**
  * This module returns the RTM Tasks-related functions for the RTMUser
@@ -83,7 +87,157 @@ module.exports = function(user) {
   };
 
   /**
-   * Get the RTMTask specified by its index
+   * Get the an RTM response of lists, task series and tasks in a JSON
+   * @param {int} index Task Index
+   * @param {string} [filter] Tasks Filter (RTM Advanced Search Syntax)
+   * @return {JSON} 
+   */
+  rtn.rtmFetch = async function(filter) {
+    // console.log(user)
+    // TODO move this to the api calling module
+    let conf = {
+      url:"https://api.rememberthemilk.com",
+      apiKey:user._client._apiKey,
+      apiSecret:user._client._apiSecret,
+      perms:user._client._perms,
+      apiToken:user._authToken,
+      userId:user.id
+    }
+
+    // TODO move this to the API calling module
+    let path = '/services/rest/'
+    let query = {
+      filter: filter ,
+      auth_token: conf.apiToken,
+      method: 'rtm.tasks.getList',
+      api_key: conf.apiKey,
+      v: 2,
+      format: 'json'
+    }
+
+
+    let apiSig=sign(query,{secret:conf.apiSecret})
+
+    // _formQuery needs to be loaded from a helper
+    let url = `${conf.url}${path}?${_formQuery(query)}&api_sig=${apiSig}`
+    let response = await callAPI(url);
+    return await response.rsp.tasks?.list
+  }
+
+  /**
+   * Get the RTMTask specified by its index. Unlike getTask(), this will only create an RTMTask
+   * for the matching index, which is more performant.
+   * @param {int} index Task Index
+   * @param {string} [filter] Tasks Filter (RTM Advanced Search Syntax)
+   * @function RTMUser~tasks/getTask
+   * @return {RTMTask}
+   */
+  rtn.rtmIndexFetchTask = async function(index,filter) {
+
+    // TODO move this to the api calling module
+    let conf = {
+      url:"https://api.rememberthemilk.com",
+      apiKey:user._client._apiKey,
+      apiSecret:user._client._apiSecret,
+      perms:user._client._perms,
+      apiToken:user._authToken,
+      userId:user.id
+    }
+
+    // TODO move this to the API calling module
+    let path = '/services/rest/'
+    let query = {
+      filter: filter ,
+      auth_token: conf.apiToken,
+      method: 'rtm.tasks.getList',
+      api_key: conf.apiKey,
+      v: 2,
+      format: 'json'
+    }
+
+
+    let apiSig=sign(query,{secret:conf.apiSecret})
+
+    // _formQuery needs to be loaded from a helper
+    let url = `${conf.url}${path}?${_formQuery(query)}&api_sig=${apiSig}`
+    let response = await callAPI(url);
+    const lists =  response.rsp.tasks?.list
+
+
+    // index to ids
+    let listId = getListId(conf.userId,index)
+    let taskSeriesId = getTaskSeriesId(conf.userId,index)
+    let taskId = getTaskId(conf.userId,index)
+    // console.log({listId,taskSeriesId,taskId})
+    // TODO if undefined return error
+    if (listId == undefined || taskSeriesId == undefined || taskId == undefined) {
+      return {err: {code: -3}} // Not sure why this is the code
+    }
+        // filter the response for the index
+    // TODO refactor this, maybe return RTMTask
+    let taskList = lists.filter(x => x.id == listId)[0].taskseries
+    let taskSeries = taskList ? taskList.filter(x => x.id == taskSeriesId)[0] : null
+    // console.log(taskSeries)
+    // ONly return the single task from the series.  This is usually turned into an RTM task
+    taskSeries
+      ? taskSeries.task = taskSeries.task.filter(x => x.id == taskId)[0]
+      : null
+
+    // console.log(taskSeries.task)
+    // console.log({user:user.id,listId,taskSeries,task:taskSeries.task})
+    let err
+    let returnTask
+    if (!taskSeries ) {
+      err = {code: -3} // Not sure why this is the code 
+    }  else {
+      returnTask = new RTMTask(user.id,listId,taskSeries,taskSeries.task)
+    }
+    return {err,task:returnTask}
+  }
+
+// TODO require from utils/get.js or the new fetch helper
+  /**
+ * Generate a URI Encoded query string from the parameters set of
+ * key/value pairs
+ * @param {object} params Object containing the key/value parameters
+ * @returns {string} URL Encoded query string
+ * @private
+ */
+function _formQuery(params) {
+  let parts = [];
+  for ( let key in params ) {
+    if ( params.hasOwnProperty(key) ) {
+      parts.push(encodeURIComponent(key) + "=" + encodeURIComponent(params[key]));
+    }
+  }
+  return parts.join("&");
+}
+
+// TODO move to new fetch helper
+/**
+ * 
+ * @param {string} url fully formed url to call
+ * @returns JSON response
+ */
+ async function callAPI(url) {
+  try {
+      const response = await fetch(url);
+      if (await response.ok) {
+          return await response.json();
+      } else {
+          // TODO improve this error message
+          console.error('There was an error');
+      }
+  } catch (error) {
+      console.error(error)
+  }
+}
+
+
+  /**
+   * Get the RTMTask specified by its index. While this will return only the matching RTMTask,
+   * this function will create RTMTasks, updating the index for every task returned. This can
+   * contribute to laggy performance. You may be better off using rtmIndexFetchTask()
    * @param {int} index Task Index
    * @param {string} [filter] Tasks Filter (RTM Advanced Search Syntax)
    * @param {function} callback Callback function(err, task)

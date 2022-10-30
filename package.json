@@ -26,5 +26,8 @@
   },
   "bugs": {
     "url": "https://github.com/dwaring87/rtm-api/issues"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
   }
 }
