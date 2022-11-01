@@ -149,6 +149,7 @@ module.exports = function(user) {
    * @param {RTMError} callback.err RTM API Error Response, if encountered
    * @param {RTMTask} callback.task Matching RTM Task
    * @function RTMUser~tasks/getTask
+   * @deprecated use rtmIndexFetchTask instead
    */
   rtn.getTask = function(index, filter, callback) {
     if ( callback === undefined && typeof filter === 'function' ) {
