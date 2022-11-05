@@ -4,6 +4,9 @@ const _tasks = require('../task/helper.js');
 const _lists = require('../list/helper.js');
 const taskIds = require('../utils/taskIds.js');
 const errors = require('../response/error.js');
+const { getListId, getTaskId, getTaskSeriesId } = require('../utils/taskIds');
+const { callAPI, buildUrl } = require('../utils/fetch')
+const RTMTask = require('../task/index.js');
 
 /**
  * This module returns the RTM Tasks-related functions for the RTMUser
@@ -83,13 +86,69 @@ module.exports = function(user) {
   };
 
   /**
-   * Get the RTMTask specified by its index
+   * Get the an RTM response of lists, task series and tasks in a JSON
+   * @param {int} index Task Index
+   * @param {string} [filter] Tasks Filter (RTM Advanced Search Syntax)
+   * @return {JSON} 
+   */
+  rtn.rtmFetch = async function(filter) {
+    let url = buildUrl(user,filter)
+    let response = await callAPI(url);
+    return await response.rsp.tasks?.list
+  }
+
+  /**
+   * Get the RTMTask specified by its index. Unlike getTask(), this will only create an RTMTask
+   * for the matching index, which is more performant.
+   * @param {int} index Task Index
+   * @param {string} [filter] Tasks Filter (RTM Advanced Search Syntax)
+   * @function RTMUser~tasks/getTask
+   * @return {RTMTask}
+   */
+  rtn.rtmIndexFetchTask = async function(index,filter) {
+
+    let url = buildUrl(user,filter)
+    let response = await callAPI(url,user);
+    const lists =  response.rsp.tasks?.list
+
+
+    // index to ids
+    let listId = getListId(user.id,index)
+    let taskSeriesId = getTaskSeriesId(user.id,index)
+    let taskId = getTaskId(user.id,index)
+
+    if (listId == undefined || taskSeriesId == undefined || taskId == undefined) {
+      return {err: {code: -3}} // Not sure why this is the code
+    }
+    // filter the response for the matching index
+    let taskList = lists.filter(x => x.id == listId)[0].taskseries
+    let taskSeries = taskList ? taskList.filter(x => x.id == taskSeriesId)[0] : null
+    taskSeries
+      ? taskSeries.task = taskSeries.task.filter(x => x.id == taskId)[0]
+      : null
+
+
+    let err
+    let task
+    if (!taskSeries ) {
+      err = {code: -3} // Not sure why this is the code 
+    }  else {
+      task = new RTMTask(user.id,listId,taskSeries,taskSeries.task)
+    }
+    return {err,task}
+  }
+
+  /**
+   * Get the RTMTask specified by its index. While this will return only the matching RTMTask,
+   * this function will create RTMTasks, updating the index for every task returned. This can
+   * contribute to laggy performance. You may be better off using rtmIndexFetchTask()
    * @param {int} index Task Index
    * @param {string} [filter] Tasks Filter (RTM Advanced Search Syntax)
    * @param {function} callback Callback function(err, task)
    * @param {RTMError} callback.err RTM API Error Response, if encountered
    * @param {RTMTask} callback.task Matching RTM Task
    * @function RTMUser~tasks/getTask
+   * @deprecated use rtmIndexFetchTask instead
    */
   rtn.getTask = function(index, filter, callback) {
     if ( callback === undefined && typeof filter === 'function' ) {
