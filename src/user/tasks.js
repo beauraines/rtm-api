@@ -4,9 +4,8 @@ const _tasks = require('../task/helper.js');
 const _lists = require('../list/helper.js');
 const taskIds = require('../utils/taskIds.js');
 const errors = require('../response/error.js');
-const sign = require('../utils/sign')
 const { getListId, getTaskId, getTaskSeriesId } = require('../utils/taskIds');
-const { callAPI, formQuery, buildUrl } = require('../utils/fetch')
+const { callAPI, buildUrl } = require('../utils/fetch')
 const RTMTask = require('../task/index.js');
 
 /**
