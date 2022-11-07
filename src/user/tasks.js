@@ -92,7 +92,13 @@ module.exports = function(user) {
    * @return {JSON} 
    */
   rtn.rtmFetch = async function(filter) {
-    let url = buildUrl(user,filter)
+
+    let auth ={
+      token:  user._authToken,
+      key: user._client._apiKey,
+      secret: user._client._apiSecret
+    }
+    let url = buildUrl(auth,filter)
     let response = await callAPI(url);
     return await response.rsp.tasks?.list
   }
@@ -107,7 +113,12 @@ module.exports = function(user) {
    */
   rtn.rtmIndexFetchTask = async function(index,filter) {
 
-    let url = buildUrl(user,filter)
+    let auth ={
+      token:  user._authToken,
+      key: user._client._apiKey,
+      secret: user._client._apiSecret
+    }
+    let url = buildUrl(auth,filter)
     let response = await callAPI(url,user);
     const lists =  response.rsp.tasks?.list
 

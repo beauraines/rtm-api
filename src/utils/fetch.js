@@ -9,18 +9,23 @@ const base = config.api.url.base;
 const format = config.api.format;
 const version = config.api.version;
 
+function buildUrl(auth,filter) {
+  
+  let auth_token = auth.token;
+  let api_key = auth.key;
+  let secret = auth.secret;
 
-function buildUrl(user,filter) {
+
   let query = {
-    filter: filter ,
-    auth_token: user._authToken,
+    filter ,
+    auth_token,
     method: 'rtm.tasks.getList',
-    api_key: user._client._apiKey,
+    api_key,
     v: version,
     format
   }
 
-  let apiSig=sign(query,{secret:user._client._apiSecret})
+  let apiSig=sign(query,{secret})
 
   let url = `${scheme}://${base}?${formQuery(query)}&api_sig=${apiSig}`
   return url

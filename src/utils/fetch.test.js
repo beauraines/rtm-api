@@ -1,20 +1,15 @@
 const { buildUrl,formQuery } = require('./fetch')
-const config = require('../../config');
-
-jest.mock('../user/index')
-const user = require('../user/index')
-
-user.mockImplementation( () => {
-    return this._client = {_apiKey: 1234} 
-})
-
-
 
 let filter = "hasUrl:true"
-let expectedQuery = "some string"
+let expectedQuery = "https://api.rememberthemilk.com/services/rest/?filter=hasUrl%3Atrue&auth_token=token&method=rtm.tasks.getList&api_key=key&v=2&format=json&api_sig=8b6a53fe100ef32615b093514b9c2354"
+let auth ={
+    token:  "token",
+    key: "key",
+    secret: "secret"
+  }
 
-test.skip('builds the URL string', () => {
-expect(buildUrl(user,filter)).toBe(expectedQuery);
+test('builds the URL string', () => {
+    expect(buildUrl(auth,filter)).toBe(expectedQuery);
 });
 
 test('formats the query',() => {
