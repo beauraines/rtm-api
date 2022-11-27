@@ -56,7 +56,7 @@ user.tasks.get('priority:1', function(err, tasks) {
 This module can be installed via `npm`:
 
 ```
-npm install rtm-api
+npm i @beauraines/rtm-api
 ```
 
 or downloaded directly from the [GitHub repository](https://github.com/beauraines/rtm-api).
