@@ -1,8 +1,8 @@
 {
-  "name": "rtm-api",
-  "version": "1.4.0",
+  "name": "@beauraines/rtm-api",
+  "version": "1.4.1",
   "description": "Remember the Milk API Interface",
-  "author": "David Waring <dev@davidwaring.net> (https://davidwaring.net)",
+  "author": "Beau Raines <beau.raines@gmail.com>",
   "license": "MIT",
   "keywords": [
     "rtm",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dwaring87/rtm-api.git"
+    "url": "git+https://github.com/beauraines/rtm-api.git"
   },
   "bugs": {
-    "url": "https://github.com/dwaring87/rtm-api/issues"
+    "url": "https://github.com/beauraines/rtm-api/issues"
   },
   "dependencies": {
     "node-fetch": "^2.6.7"

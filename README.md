@@ -1,8 +1,8 @@
 Remember The Milk API Interface
 ===============================
 
-**node module:** [rtm-api](https://www.npmjs.com/package/rtm-api)  
-**GitHub repo:** [dwaring87/rtm-api](https://github.com/dwaring87/rtm-api)
+**node module:** [rtm-api](https://www.npmjs.com/package/@beauraines/rtm-api)  
+**GitHub repo:** [beauraines/rtm-api](https://github.com/beauraines/rtm-api)
 
 ---
 
@@ -10,6 +10,8 @@ This Node module provides a wrapper around the Remember the Milk API.
 
 You will need your own RTM API Key and Secret, available from the Remember the 
 Milk [website](https://www.rememberthemilk.com/services/api/keys.rtm).
+
+This is a fork of [dwaring87/rtm-api](https://github.com/dwaring87/rtm-api) so that I can maintain, modernize and add features. Your contributions are welcome!
 
 
 ## Main Features
@@ -57,7 +59,7 @@ This module can be installed via `npm`:
 npm install rtm-api
 ```
 
-or downloaded directly from the [GitHub repository](https://github.com/dwaring87/rtm-api).
+or downloaded directly from the [GitHub repository](https://github.com/beauraines/rtm-api).
 
 
 ## Documentation
