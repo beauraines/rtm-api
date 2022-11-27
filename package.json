@@ -1,8 +1,9 @@
 {
   "name": "@beauraines/rtm-api",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Remember the Milk API Interface",
-  "author": "Beau Raines <beau.raines@gmail.com>",
+  "author": "David Waring <dev@davidwaring.net> (https://davidwaring.net)",
+  "contributors": ["Beau Raines <beau.raines@gmail.com>"],
   "license": "MIT",
   "keywords": [
     "rtm",
