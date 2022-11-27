@@ -205,6 +205,24 @@ class RTMTask {
     // Assign Task Index
     this._index = taskIds.getIndex(userId, this);
 
+    /**
+     * Task recurring flag
+     * @type {boolean}
+     */
+    this.isRecurring = series.rrule ? true : false;
+
+    /**
+     * Task subtask flag
+     * @type {boolean}
+     */
+    this.isSubtask = series.parent_task_id != "" ? true : false;
+
+    /** Task parent task id
+     * @type {integer|undefined}
+     */
+    this.parentTaskId = series.parent_task_id != "" ? parseFloat(series.parent_task_id) : undefined;
+
+
   }
 
 
