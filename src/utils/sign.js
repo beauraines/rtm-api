@@ -44,7 +44,7 @@ function sign(params, client) {
   let toHash = client.secret + cat;
 
   // Return the Hash
-  return crypto.createHash('md5').update(toHash).digest("hex");
+  return crypto.createHash('md5').update(toHash).digest('hex');
 
 }
 
@@ -80,7 +80,7 @@ function _sort(object) {
  * @private
  */
 function _concat(object) {
-  let rtn = "";
+  let rtn = '';
   for ( let key in object ) {
     if ( object.hasOwnProperty(key) ) {
       rtn += key + object[key];

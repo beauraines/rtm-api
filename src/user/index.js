@@ -133,7 +133,7 @@ class RTMUser {
    */
   get client() {
     if ( !this._client ) {
-      throw "User does not have Client specified";
+      throw 'User does not have Client specified';
     }
     return this._client;
   }
@@ -153,7 +153,7 @@ class RTMUser {
    */
   get timeline() {
     if ( !this._timeline ) {
-      throw "User does not have a valid timeline set";
+      throw 'User does not have a valid timeline set';
     }
     return this._timeline;
   }

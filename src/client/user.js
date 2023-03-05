@@ -53,14 +53,14 @@ module.exports = function(client) {
         apiKey: user.client.key,
         apiSecret: user.client.secret,
         perms: user.client.perms
-      }
+      };
     }
     else {
       rtn.client = {
         apiKey: client.key,
         apiSecret: client.key,
         perms: client.perms
-      }
+      };
     }
 
     return rtn;
@@ -94,7 +94,7 @@ module.exports = function(client) {
       return user;
     }
     else {
-      throw "Missing User Properties";
+      throw 'Missing User Properties';
     }
   };
 

@@ -5,7 +5,7 @@ const _lists = require('../list/helper.js');
 const taskIds = require('../utils/taskIds.js');
 const errors = require('../response/error.js');
 const { getListId, getTaskId, getTaskSeriesId } = require('../utils/taskIds');
-const { callAPI, buildUrl } = require('../utils/fetch')
+const { callAPI, buildUrl } = require('../utils/fetch');
 const RTMTask = require('../task/index.js');
 
 /**
@@ -28,7 +28,7 @@ module.exports = function(user) {
   rtn.get = function(filter, callback) {
     if ( callback === undefined && typeof filter === 'function' ) {
       callback = filter;
-      filter = "";
+      filter = '';
     }
 
     // Callback counters
@@ -77,8 +77,8 @@ module.exports = function(user) {
         if ( list === undefined ) {
           list = {
             id: TASKS[i].list_id,
-            name: "List #" + TASKS[i].list_id
-          }
+            name: 'List #' + TASKS[i].list_id
+          };
         }
         TASKS[i]._list = list;
       }
@@ -92,10 +92,10 @@ module.exports = function(user) {
    * @return {JSON} 
    */
   rtn.rtmFetch = async function(filter) {
-    let url = buildUrl(user,filter)
+    let url = buildUrl(user,filter);
     let response = await callAPI(url);
-    return await response.rsp.tasks?.list
-  }
+    return await response.rsp.tasks?.list;
+  };
 
   /**
    * Get the RTMTask specified by its index. Unlike getTask(), this will only create an RTMTask
@@ -107,36 +107,36 @@ module.exports = function(user) {
    */
   rtn.rtmIndexFetchTask = async function(index,filter) {
 
-    let url = buildUrl(user,filter)
+    let url = buildUrl(user,filter);
     let response = await callAPI(url,user);
-    const lists =  response.rsp.tasks?.list
+    const lists =  response.rsp.tasks?.list;
 
 
     // index to ids
-    let listId = getListId(user.id,index)
-    let taskSeriesId = getTaskSeriesId(user.id,index)
-    let taskId = getTaskId(user.id,index)
+    let listId = getListId(user.id,index);
+    let taskSeriesId = getTaskSeriesId(user.id,index);
+    let taskId = getTaskId(user.id,index);
 
     if (listId == undefined || taskSeriesId == undefined || taskId == undefined) {
-      return {err: {code: -3}} // Not sure why this is the code
+      return {err: {code: -3}}; // Not sure why this is the code
     }
     // filter the response for the matching index
-    let taskList = lists.filter(x => x.id == listId)[0].taskseries
-    let taskSeries = taskList ? taskList.filter(x => x.id == taskSeriesId)[0] : null
+    let taskList = lists.filter(x => x.id == listId)[0].taskseries;
+    let taskSeries = taskList ? taskList.filter(x => x.id == taskSeriesId)[0] : null;
     taskSeries
       ? taskSeries.task = taskSeries.task.filter(x => x.id == taskId)[0]
-      : null
+      : null;
 
 
-    let err
-    let task
+    let err;
+    let task;
     if (!taskSeries ) {
-      err = {code: -3} // Not sure why this is the code 
+      err = {code: -3}; // Not sure why this is the code 
     }  else {
-      task = new RTMTask(user.id,listId,taskSeries,taskSeries.task)
+      task = new RTMTask(user.id,listId,taskSeries,taskSeries.task);
     }
-    return {err,task}
-  }
+    return {err,task};
+  };
 
   /**
    * Get the RTMTask specified by its index. While this will return only the matching RTMTask,
@@ -153,7 +153,7 @@ module.exports = function(user) {
   rtn.getTask = function(index, filter, callback) {
     if ( callback === undefined && typeof filter === 'function' ) {
       callback = filter;
-      filter = "";
+      filter = '';
     }
 
     // Get Task Info
@@ -347,7 +347,7 @@ module.exports = function(user) {
    * @function RTMUser~tasks/addNotes
    */
   rtn.addNotes = function(index, title, notes, callback) {
-    var title = (typeof title !== 'undefined') ? title : "";
+    var title = (typeof title !== 'undefined') ? title : '';
 
     // Get the Task
     _getTaskInfo(index, function(err, listId, taskSeriesId, taskId) {

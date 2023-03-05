@@ -64,7 +64,7 @@ function _makeRequest(scheme, options, callback) {
 
   // Require the http(s) module
   let http = undefined;
-  if ( scheme === "https" ) {
+  if ( scheme === 'https' ) {
     http = require('https');
   }
   else {
@@ -91,7 +91,7 @@ function _makeRequest(scheme, options, callback) {
 
       // Return parsed result as error or success
       if ( !parsed.isOk ) {
-        return callback(parsed)
+        return callback(parsed);
       }
       else {
         return callback(null, parsed);
@@ -182,7 +182,7 @@ function _buildRequestUrl(method, params, user, client) {
   let query = _formQuery(args.params);
 
   // Build the API request URL
-  return scheme + '://' + base + "?" + query;
+  return scheme + '://' + base + '?' + query;
 
 }
 
@@ -236,10 +236,10 @@ function _formQuery(params) {
   let parts = [];
   for ( let key in params ) {
     if ( params.hasOwnProperty(key) ) {
-      parts.push(encodeURIComponent(key) + "=" + encodeURIComponent(params[key]));
+      parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
     }
   }
-  return parts.join("&");
+  return parts.join('&');
 }
 
 

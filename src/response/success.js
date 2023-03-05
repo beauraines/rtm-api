@@ -37,7 +37,7 @@ class RTMSuccess extends RTMResponse {
    * @returns {string}
    */
   toString() {
-    return super.toString() + " " + JSON.stringify(this.props);
+    return super.toString() + ' ' + JSON.stringify(this.props);
   }
 
 }

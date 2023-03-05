@@ -51,7 +51,7 @@ function add(name, filter, user, callback) {
 
   // Invalid List Names
   if ( name === 'Inbox' || name === 'Sent' ) {
-    throw "Invalid List Name"
+    throw 'Invalid List Name';
   }
 
   // Set Parameters

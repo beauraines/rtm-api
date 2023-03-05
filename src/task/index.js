@@ -215,12 +215,12 @@ class RTMTask {
      * Task subtask flag
      * @type {boolean}
      */
-    this.isSubtask = series.parent_task_id != "" ? true : false;
+    this.isSubtask = series.parent_task_id != '' ? true : false;
 
     /** Task parent task id
      * @type {integer|undefined}
      */
-    this.parentTaskId = series.parent_task_id != "" ? parseFloat(series.parent_task_id) : undefined;
+    this.parentTaskId = series.parent_task_id != '' ? parseFloat(series.parent_task_id) : undefined;
 
 
   }
@@ -240,7 +240,7 @@ class RTMTask {
    */
   get list() {
     if ( this._list === undefined ) {
-      throw "Tasks not loaded with associated Lists"
+      throw 'Tasks not loaded with associated Lists';
     }
     return this._list;
   }
