@@ -77,7 +77,7 @@ class RTMResponse {
    * @returns {string}
    */
   toString() {
-    return "[" + this._status + "]";
+    return '[' + this._status + ']';
   }
 
 }
@@ -88,14 +88,14 @@ class RTMResponse {
  * @type {string}
  * @default
  */
-RTMResponse.STATUS_OK = "ok";
+RTMResponse.STATUS_OK = 'ok';
 
 /**
  * RTM Status of 'fail' = error
  * @type {string}
  * @default
  */
-RTMResponse.STATUS_FAIL = "fail";
+RTMResponse.STATUS_FAIL = 'fail';
 
 
 

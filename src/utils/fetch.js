@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const sign = require('../utils/sign')
+const sign = require('../utils/sign');
 
 
 // API Configuration Properties
@@ -18,12 +18,12 @@ function buildUrl(user,filter) {
     api_key: user._client._apiKey,
     v: version,
     format
-  }
+  };
 
-  let apiSig=sign(query,{secret:user._client._apiSecret})
+  let apiSig=sign(query,{secret:user._client._apiSecret});
 
-  let url = `${scheme}://${base}?${formQuery(query)}&api_sig=${apiSig}`
-  return url
+  let url = `${scheme}://${base}?${formQuery(query)}&api_sig=${apiSig}`;
+  return url;
 }
 
 
@@ -36,13 +36,13 @@ function buildUrl(user,filter) {
  * @returns {string} URL Encoded query string
  */
 function formQuery(params) {
-let parts = [];
-for ( let key in params ) {
+  let parts = [];
+  for ( let key in params ) {
     if ( params.hasOwnProperty(key) ) {
-    parts.push(encodeURIComponent(key) + "=" + encodeURIComponent(params[key]));
+      parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
     }
-}
-return parts.join("&");
+  }
+  return parts.join('&');
 }
 
 /**
@@ -52,16 +52,16 @@ return parts.join("&");
  */
 async function callAPI(url) {
   try {
-      const response = await fetch(url);
-      if (await response.ok) {
-          return await response.json();
-      } else {
-          // TODO improve this error message
-          console.error('There was an error');
-      }
-    } catch (error) {
-        console.error(error)
+    const response = await fetch(url);
+    if (await response.ok) {
+      return await response.json();
+    } else {
+      // TODO improve this error message
+      console.error('There was an error');
     }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-module.exports = {callAPI,formQuery, buildUrl}
+module.exports = {callAPI,formQuery, buildUrl};

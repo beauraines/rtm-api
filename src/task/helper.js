@@ -76,42 +76,42 @@ function add(name, props, user, callback) {
 
   // Parse the props keys
   if ( props.due ) {
-    name = name + " ^" + props.due;
+    name = name + ' ^' + props.due;
   }
   if ( props.priority ) {
-    name = name + " !" + props.priority
+    name = name + ' !' + props.priority;
   }
   if ( props.list ) {
-    name = name + " #" + props.list;
+    name = name + ' #' + props.list;
   }
   if ( props.tags ) {
     if ( !Array.isArray(props.tags) ) {
       props.tags = [props.tags];
     }
     for ( let i = 0; i < props.tags.length; i++ ) {
-      name = name + " #" + props.tags[i];
+      name = name + ' #' + props.tags[i];
     }
   }
   if ( props.location ) {
-    name = name + " @" + props.location;
+    name = name + ' @' + props.location;
   }
   if ( props.start ) {
-    name = name + " ~" + props.start;
+    name = name + ' ~' + props.start;
   }
   if ( props.repeat ) {
-    name = name + " *" + props.repeat;
+    name = name + ' *' + props.repeat;
   }
   if ( props.estimate ) {
-    name = name + " =" + props.estimate;
+    name = name + ' =' + props.estimate;
   }
   if ( props.to ) {
-    name = name + " +" + props.to;
+    name = name + ' +' + props.to;
   }
   if ( props.url ) {
-    name = name + " " + props.url;
+    name = name + ' ' + props.url;
   }
   if ( props.note ) {
-    name = name + " //" + props.note;
+    name = name + ' //' + props.note;
   }
 
   // Set the request params
@@ -233,7 +233,7 @@ function addNotes(listId, taskSeriesId, taskId, title, notes, user, callback) {
     list_id: listId,
     taskseries_id: taskSeriesId,
     task_id: taskId,
-	note_title: title,
+    note_title: title,
     note_text: notes
   };
   user.get('rtm.tasks.notes.add', params, function(err) {
@@ -274,7 +274,7 @@ function remove(listId, taskSeriesId, taskId, user, callback) {
  */
 function movePriority(listId, taskSeriesId, taskId, direction, user, callback) {
   if ( direction.toLowerCase() !== 'up' && direction.toLowerCase() !== 'down' ) {
-    throw "Incorrect priority direction.  Must be either 'up' or 'down'";
+    throw 'Incorrect priority direction.  Must be either \'up\' or \'down\'';
   }
   let params = {
     timeline: user.timeline,

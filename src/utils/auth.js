@@ -86,14 +86,14 @@ function getAuthToken(frob, client, callback) {
  * @param {function} callback Callback function(err, verified)
  * @private
  */
- function verifyAuthToken(token, client, callback) {
+function verifyAuthToken(token, client, callback) {
 
-   // Get token from RTMUser
-   if ( typeof token === 'object' ) {
-     if ( token.constructor.name === 'RTMUser' ) {
-       token = token.authToken;
-     }
-   }
+  // Get token from RTMUser
+  if ( typeof token === 'object' ) {
+    if ( token.constructor.name === 'RTMUser' ) {
+      token = token.authToken;
+    }
+  }
 
   // Set request parameters
   let params = {
@@ -173,10 +173,10 @@ function _formQuery(params) {
   let parts = [];
   for ( let key in params ) {
     if ( params.hasOwnProperty(key) ) {
-      parts.push(encodeURIComponent(key) + "=" + encodeURIComponent(params[key]));
+      parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
     }
   }
-  return parts.join("&");
+  return parts.join('&');
 }
 
 

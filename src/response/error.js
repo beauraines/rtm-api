@@ -50,7 +50,7 @@ class RTMError extends RTMResponse{
    * @returns {string}
    */
   toString() {
-    return super.toString() + " ERROR " + this._code + ": " + this._msg;
+    return super.toString() + ' ERROR ' + this._code + ': ' + this._msg;
   }
 
 }
@@ -65,7 +65,7 @@ class RTMError extends RTMResponse{
  * @returns {RTMError}
  */
 RTMError.networkError = function() {
-  return new RTMError(-1, "Network Error: Could not make request to RTM API Server");
+  return new RTMError(-1, 'Network Error: Could not make request to RTM API Server');
 };
 
 /**
@@ -75,7 +75,7 @@ RTMError.networkError = function() {
  * @returns {RTMError}
  */
 RTMError.responseError = function() {
-  return new RTMError(-2, "Response Error: Could not parse the response from the RTM API Server");
+  return new RTMError(-2, 'Response Error: Could not parse the response from the RTM API Server');
 };
 
 /**
@@ -86,7 +86,7 @@ RTMError.responseError = function() {
  * @returns {RTMError}
  */
 RTMError.referenceError = function() {
-  return new RTMError(-3, "Reference Error: Could not find item by reference index number or name");
+  return new RTMError(-3, 'Reference Error: Could not find item by reference index number or name');
 };
 
 /**
@@ -97,7 +97,7 @@ RTMError.referenceError = function() {
  * @returns {RTMError}
  */
 RTMError.rateLimitError = function() {
-  return new RTMError(-4, "Rate Limit Error: Your Account has temporarily reached the RTM API Rate Limit.  Please wait a minute and try the request again later.");
+  return new RTMError(-4, 'Rate Limit Error: Your Account has temporarily reached the RTM API Rate Limit.  Please wait a minute and try the request again later.');
 };
 
 /**
@@ -108,7 +108,7 @@ RTMError.rateLimitError = function() {
  * @returns {RTMError}
  */
 RTMError.serverError = function() {
-  return new RTMError(-5, "RTM API Server Error: The RTM API Server is not responding.  Please try the request again later.");
+  return new RTMError(-5, 'RTM API Server Error: The RTM API Server is not responding.  Please try the request again later.');
 };
 
 module.exports = RTMError;
