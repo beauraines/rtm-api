@@ -3,7 +3,9 @@
   "version": "1.4.2",
   "description": "Remember the Milk API Interface",
   "author": "David Waring <dev@davidwaring.net> (https://davidwaring.net)",
-  "contributors": ["Beau Raines <beau.raines@gmail.com>"],
+  "contributors": [
+    "Beau Raines <beau.raines@gmail.com>"
+  ],
   "license": "MIT",
   "keywords": [
     "rtm",
@@ -15,7 +17,10 @@
   ],
   "main": "src/client/index.js",
   "scripts": {
-    "docs": "jsdoc -c jsdoc.json --readme README.md --template $NODE_PATH/@dwaring87/docdash"
+    "docs": "jsdoc -c jsdoc.json --readme README.md --template $NODE_PATH/@dwaring87/docdash",
+    "test": "jest --passWithNoTests",
+    "release": "standard-version",
+    "should-release": "should-release"
   },
   "devDependencies": {
     "@dwaring87/docdash": "^0.4.1",
@@ -29,6 +34,9 @@
     "url": "https://github.com/beauraines/rtm-api/issues"
   },
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "jest": "^29.4.3",
+    "node-fetch": "^2.6.7",
+    "should-release": "^1.2.0",
+    "standard-version": "^9.5.0"
   }
 }
