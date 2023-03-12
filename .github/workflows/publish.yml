@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ['Node.js CI']
     types: [completed]
-    branches: [master,main]
+    branches: [main]
 
 jobs:
   publish-new-version:
