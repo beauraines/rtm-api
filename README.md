@@ -64,10 +64,11 @@ or downloaded directly from the [GitHub repository](https://github.com/beauraine
 
 ## Documentation
 
-Full documentation is available in the **/docs/** directory of this repository or 
-online at [https://dwaring87.github.io/rtm-api/](https://dwaring87.github.io/rtm-api/).
+Full documentation is available in the **/docs/** directory of this repository.
 
-Additional usage examples can be found in the repository's [wiki pages](https://github.com/dwaring87/rtm-api/wiki).
+dwaring87's documentation is still online, but not updated at 
+[https://dwaring87.github.io/rtm-api/](https://dwaring87.github.io/rtm-api/) or on his 
+[wiki pages](https://github.com/dwaring87/rtm-api/wiki).
 
 
 ## Usage
@@ -212,6 +213,18 @@ user.get('rtm.tasks.getList', params, function(err, resp) {
 The arguments returned in the callback of the `get` function will include an 
 `RTMError` instance (if the RTM API returned a status of 'fail') or an 
 `RTMSuccess` instance for successful requests.
+
+#### Debugging API Responses
+
+The [`debug`](https://www.npmjs.com/package/debug) package is used to dump the API responses from
+the `get` or `fetch` functions, by setting the `DEBUG` environment variable when executing the client
+that uses this API.
+
+`DEBUG=rtm-api-fetch <yourclientscripthere>`
+
+`DEBUG=rtm-api-get <yourclientscripthere>`
+
+`DEBUG=* <yourclientscripthere>`
 
 #### Error Responses
 
