@@ -360,7 +360,7 @@ module.exports = function(user) {
         listId,
         taskSeriesId,
         taskId,
-    	title,
+        title,
         notes,
         user,
         callback
@@ -588,7 +588,7 @@ module.exports = function(user) {
         return callback(err);
       }
 
-      // Decrease the Priority of the Task
+      // Sets the Due Date of the Task
       return _tasks.setDueDate(
         listId,
         taskSeriesId,
@@ -600,6 +600,36 @@ module.exports = function(user) {
 
     });
 
+  };
+
+  /**
+   * Set the Start Date of the specified Task
+   * @param {int} index Task Index
+   * @param {string} start The Start Date of the Task (RTM parsed date)
+   * @param {function} callback Callback function(err)
+   * @param {RTMError} callback.err RTM API Error Response, if encountered
+   * @function RTMUser~tasks/setStartDate
+   */
+  rtn.setStartDate = function(index, start, callback) {
+
+    // Get the Task
+    _getTaskInfo(index, function(err, listId, taskSeriesId, taskId) {
+      if ( err ) {
+        return callback(err);
+      }
+  
+      // Sets the Start Date of the Task
+      return _tasks.setStartDate(
+        listId,
+        taskSeriesId,
+        taskId,
+        start,
+        user,
+        callback
+      );
+  
+    });
+  
   };
 
   /**
