@@ -8,6 +8,8 @@ const RTMClient = require('../client/index.js');
 const RTMUser = require('../user/index.js');
 const sign = require('./sign.js');
 
+const debug = require('debug')('rtm-api-get');
+
 // API Configuration Properties
 const config = require('../../config');
 const scheme = config.api.scheme;
@@ -88,6 +90,7 @@ function _makeRequest(scheme, options, callback) {
 
       // Parse the API Response
       let parsed = parse(resp);
+      debug(JSON.stringify(parsed));
 
       // Return parsed result as error or success
       if ( !parsed.isOk ) {
