@@ -17,7 +17,7 @@
   ],
   "main": "src/client/index.js",
   "scripts": {
-    "docs": "jsdoc -c jsdoc.json --readme README.md --template $NODE_PATH/@dwaring87/docdash",
+    "docs": "jsdoc -c jsdoc.json --readme README.md --template node_modules/@dwaring87/docdash",
     "test": "jest --passWithNoTests",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
