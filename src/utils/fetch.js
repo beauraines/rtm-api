@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const sign = require('../utils/sign')
+const sign = require('../utils/sign');
 const debug = require('debug')('rtm-api-fetch');
 
 // API Configuration Properties
@@ -52,15 +52,15 @@ function formQuery(params) {
  */
 async function callAPI(url) {
   try {
-      const response = await fetch(url);
-      if (await response.ok) {
-          const responseJson = await response.json();
-	  debug(JSON.stringify(responseJson))
-	  return responseJson 
-      } else {
-          // TODO improve this error message
-          console.error('There was an error');
-      }
+    const response = await fetch(url);
+    if (await response.ok) {
+      const responseJson = await response.json();
+	  debug(JSON.stringify(responseJson));
+	  return responseJson; 
+    } else {
+      // TODO improve this error message
+      console.error('There was an error');
+    }
   } catch (error) {
     console.error(error);
   }

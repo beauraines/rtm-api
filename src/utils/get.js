@@ -90,7 +90,7 @@ function _makeRequest(scheme, options, callback) {
 
       // Parse the API Response
       let parsed = parse(resp);
-      debug(JSON.stringify(parsed))
+      debug(JSON.stringify(parsed));
 
       // Return parsed result as error or success
       if ( !parsed.isOk ) {
