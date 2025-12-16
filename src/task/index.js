@@ -1,6 +1,7 @@
 'use strict';
 
 const taskIds = require('../utils/taskIds.js');
+const rruleToISODuration = require('../utils/rruleToDuration.js');
 
 
 /**
@@ -210,6 +211,15 @@ class RTMTask {
      * @type {boolean}
      */
     this.isRecurring = series.rrule ? true : false;
+
+    /**
+     * Task recurrence rule
+     * @type {string}}
+     */
+    this.recurrenceRule = series.rrule?.toString() === '' ? undefined : rruleToISODuration(series.rrule);
+    this.recurrenceRuleRaw = series.rrule?.toString() === '' ? undefined : JSON.stringify(series.rrule);
+
+
 
     /**
      * Task subtask flag
