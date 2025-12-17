@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/beauraines/rtm-api/compare/v1.12.0...v1.13.0) (2025-12-17)
+
+
+### Features
+
+* includes recurrence rule on RTMTask object ([#71](https://github.com/beauraines/rtm-api/issues/71)) ([9400a6e](https://github.com/beauraines/rtm-api/commit/9400a6e1376cec40e2ae3ffed3661357d551b65b)), closes [#66](https://github.com/beauraines/rtm-api/issues/66)
+
+
+### Bug Fixes
+
+* **deps:** bump debug from 4.3.5 to 4.4.0 ([#62](https://github.com/beauraines/rtm-api/issues/62)) ([fdd0986](https://github.com/beauraines/rtm-api/commit/fdd0986218fe4cca119d7b1c11ef3e45dbd12055)), closes [debug-js/debug#819](https://github.com/debug-js/debug/issues/819) [debug-js/debug#969](https://github.com/debug-js/debug/issues/969) [debug-js/debug#969](https://github.com/debug-js/debug/issues/969) [#819](https://github.com/beauraines/rtm-api/issues/819)
+
 ## [1.12.0](https://github.com/beauraines/rtm-api/compare/v1.5.0...v1.12.0) (2024-06-24)
 
 
