@@ -216,8 +216,8 @@ class RTMTask {
      * Task recurrence rule
      * @type {string}}
      */
-    this.recurrenceRule = series.rrule?.toString() === '' ? undefined : rruleToISODuration(series.rrule);
-    this.recurrenceRuleRaw = series.rrule?.toString() === '' ? undefined : JSON.stringify(series.rrule);
+    this.recurrenceRule = series.rrule ? rruleToISODuration(series.rrule) : undefined;
+    this.recurrenceRuleRaw = series.rrule ? JSON.stringify(series.rrule) : undefined;
 
 
 
