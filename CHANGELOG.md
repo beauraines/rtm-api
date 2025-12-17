@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/beauraines/rtm-api/compare/v1.13.0...v1.13.1) (2025-12-17)
+
+
+### Bug Fixes
+
+* properly handles undefined rrules ([#72](https://github.com/beauraines/rtm-api/issues/72)) ([c334b48](https://github.com/beauraines/rtm-api/commit/c334b48d1f7a18171754e3c9a37e99f53ef8ba45))
+
 ## [1.13.0](https://github.com/beauraines/rtm-api/compare/v1.12.0...v1.13.0) (2025-12-17)
 
 
