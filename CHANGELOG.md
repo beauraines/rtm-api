@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/beauraines/rtm-api/compare/v1.13.1...v1.14.0) (2025-12-19)
+
+
+### Features
+
+* **Locations:** adds support. for get Locations ([4694b54](https://github.com/beauraines/rtm-api/commit/4694b54f8b6e4096dc235e83f83f8164c8f164c7))
+* **Locations:** adds support. for get Locations ([#74](https://github.com/beauraines/rtm-api/issues/74)) ([76a6e05](https://github.com/beauraines/rtm-api/commit/76a6e059ad6717e43e64fb6f4584d2fbc9838d2e))
+
 ### [1.13.1](https://github.com/beauraines/rtm-api/compare/v1.13.0...v1.13.1) (2025-12-17)
 
 
