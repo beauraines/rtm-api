@@ -260,6 +260,16 @@ class RTMUser {
 
 
   /**
+   * RTM Location related functions:
+   * - {@link RTMUser~locations/get|get}
+   * @returns {{get: function}}
+   */
+  get locations() {
+    return require('./locations.js')(this);
+  }
+
+
+  /**
    * RTM Task related functions:
    * - {@link RTMUser~tasks/get|get}
    * - {@link RTMUser~tasks/add|add}
