@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.1](https://github.com/beauraines/rtm-api/compare/v1.14.0...v1.14.1) (2025-12-19)
+
+
+### Bug Fixes
+
+* adds Location functions to the user ([18322b7](https://github.com/beauraines/rtm-api/commit/18322b743419a7274e65d55780563198088cfd1d))
+
 ## [1.14.0](https://github.com/beauraines/rtm-api/compare/v1.13.1...v1.14.0) (2025-12-19)
 
 
