@@ -121,6 +121,11 @@ function add(name, props, user, callback) {
     parse: '1'
   };
 
+  // Add parent_task_id if provided (for creating subtasks, Pro accounts only)
+  if ( props.parent_task_id ) {
+    params.parent_task_id = props.parent_task_id;
+  }
+
   // Make the API Request
   user.get('rtm.tasks.add', params, function(err) {
     return callback(err);
