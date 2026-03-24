@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.3](https://github.com/beauraines/rtm-api/compare/v1.14.1...v1.14.3) (2026-03-24)
+
+
+### Bug Fixes
+
+* **deps:** bump debug from 4.4.0 to 4.4.3 ([#76](https://github.com/beauraines/rtm-api/issues/76)) ([aa26e00](https://github.com/beauraines/rtm-api/commit/aa26e00e2c5d0c56ed147c420b901adb8c7e0161)), closes [debug-js/debug#1005](https://github.com/debug-js/debug/issues/1005) [debug-js/debug#997](https://github.com/debug-js/debug/issues/997) [#987](https://github.com/beauraines/rtm-api/issues/987) [debug-js/debug#988](https://github.com/debug-js/debug/issues/988) [debug-js/debug#997](https://github.com/debug-js/debug/issues/997) [debug-js/debug#988](https://github.com/debug-js/debug/issues/988) [#987](https://github.com/beauraines/rtm-api/issues/987) [#988](https://github.com/beauraines/rtm-api/issues/988)
+* **deps:** bump lodash from 4.17.21 to 4.17.23 ([#77](https://github.com/beauraines/rtm-api/issues/77)) ([a488bac](https://github.com/beauraines/rtm-api/commit/a488bac293e7e5b4d23d1edd51cb43106bc3aa11)), closes [#6088](https://github.com/beauraines/rtm-api/issues/6088) [#6071](https://github.com/beauraines/rtm-api/issues/6071) [#6062](https://github.com/beauraines/rtm-api/issues/6062) [#6056](https://github.com/beauraines/rtm-api/issues/6056) [#6053](https://github.com/beauraines/rtm-api/issues/6053) [#6052](https://github.com/beauraines/rtm-api/issues/6052) [#6039](https://github.com/beauraines/rtm-api/issues/6039) [#6023](https://github.com/beauraines/rtm-api/issues/6023) [#5968](https://github.com/beauraines/rtm-api/issues/5968)
+
 ### [1.14.1](https://github.com/beauraines/rtm-api/compare/v1.14.0...v1.14.1) (2025-12-19)
 
 
