@@ -122,10 +122,28 @@ function archive(id, user, callback) {
   });
 }
 
+/**
+ * API Call: rtm.lists.unarchive
+ * @param id RTM List ID
+ * @param user RTMUser
+ * @param callback Callback function(err)
+ * @private
+ */
+function unarchive(id, user, callback) {
+  let params = {
+    timeline: user.timeline,
+    list_id: id
+  };
+  user.get('rtm.lists.unarchive', params,  function(err) {
+    return callback(err);
+  });
+}
+
 module.exports = {
   get: get,
   add: add,
   remove: remove,
   rename: rename,
-  archive: archive
+  archive: archive,
+  unarchive: unarchive
 };

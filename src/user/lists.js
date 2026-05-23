@@ -7,7 +7,7 @@ const _lists = require('../list/helper.js');
 /**
  * This module returns the RTM list-related functions for the RTMUser
  * @param {RTMUser} user RTM User instance
- * @returns {{get: function, update: function, add: function, remove: function, rename: function, archive: function}}
+ * @returns {{get: function, update: function, add: function, remove: function, rename: function, archive: function, unarchive: function}}
  * @private
  */
 module.exports = function(user) {
@@ -134,9 +134,43 @@ module.exports = function(user) {
         }
       }
 
-      // Remove the matching List
+      // Archive the matching List
       if ( ids.length === 1 ) {
         return _lists.archive(ids[0], user, callback);
+      }
+      else {
+        return callback(errors.referenceError());
+      }
+
+    });
+
+  };
+
+  /**
+   * Unarchive the specified RTM List for this User
+   * @param {string} name RTM List Name
+   * @param {function} callback Callback function(err)
+   * @param {RTMError} callback.err RTM API Error Response, if encountered
+   * @function RTMUser~lists/unarchive
+   */
+  rtn.unarchive = function(name, callback) {
+    // Get the User's Lists
+    _lists.get(user, function(err, lists) {
+      if ( err ) {
+        return callback(err);
+      }
+
+      // Find the matching list IDs
+      let ids = [];
+      for ( let i = 0; i < lists.length; i++ ) {
+        if ( lists[i].name.toLowerCase() === name.toLowerCase() ) {
+          ids.push(lists[i].id);
+        }
+      }
+
+      // Unarchive the matching List
+      if ( ids.length === 1 ) {
+        return _lists.unarchive(ids[0], user, callback);
       }
       else {
         return callback(errors.referenceError());
