@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/beauraines/rtm-api/compare/v1.14.3...v1.15.0) (2026-05-23)
+
+
+### Features
+
+* Implement unarchiving lists ([#92](https://github.com/beauraines/rtm-api/issues/92)) ([8946e4c](https://github.com/beauraines/rtm-api/commit/8946e4c6f9d4fd75e0f10e40962a2dd54c8455ac))
+
 ### [1.14.3](https://github.com/beauraines/rtm-api/compare/v1.14.1...v1.14.3) (2026-03-24)
 
 
