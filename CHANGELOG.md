@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.3](https://github.com/beauraines/rtm-api/compare/v1.15.2...v1.15.3) (2026-05-23)
+
+
+### Bug Fixes
+
+* **deps:** bump picomatch ([#87](https://github.com/beauraines/rtm-api/issues/87)) ([0838a4a](https://github.com/beauraines/rtm-api/commit/0838a4a78c57f0820d632ffe2a65644982a0da6e)), closes [micromatch/picomatch#144](https://github.com/micromatch/picomatch/issues/144) [#126](https://github.com/beauraines/rtm-api/issues/126) [#129](https://github.com/beauraines/rtm-api/issues/129) [#128](https://github.com/beauraines/rtm-api/issues/128) [#124](https://github.com/beauraines/rtm-api/issues/124) [#156](https://github.com/beauraines/rtm-api/issues/156) [#144](https://github.com/beauraines/rtm-api/issues/144) [micromatch/picomatch#144](https://github.com/micromatch/picomatch/issues/144) [#126](https://github.com/beauraines/rtm-api/issues/126) [#129](https://github.com/beauraines/rtm-api/issues/129) [#128](https://github.com/beauraines/rtm-api/issues/128) [#124](https://github.com/beauraines/rtm-api/issues/124) [#156](https://github.com/beauraines/rtm-api/issues/156) [#144](https://github.com/beauraines/rtm-api/issues/144)
+
 ### [1.15.2](https://github.com/beauraines/rtm-api/compare/v1.15.0...v1.15.2) (2026-05-23)
 
 
