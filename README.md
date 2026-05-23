@@ -263,6 +263,7 @@ The following **list** functions are available:
   - `get()`: get an array of `RTMList`s
   - `add()`: add a new List
   - `archive()`: archive a List
+  - `unarchive()`: unarchive a List
   - `rename()`: rename a List
   - `remove()`: remove a List
   
