@@ -1,4 +1,7 @@
 Remember The Milk API Interface
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 ===============================
 
 **node module:** [rtm-api](https://www.npmjs.com/package/@beauraines/rtm-api)  
@@ -296,3 +299,25 @@ Examples using the helper functions can be found in the repository's
 The API configuration (such as the URL and connection rate limiting parameters) are defined in the `config.js` file.  In addition, 
 the location of the cache file used to associate specific tasks with their Task ID numbers can be specified in the file or by 
 setting the `RTM_INDEX_CACHE` environment parameter.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://prosumer.dev"><img src="https://avatars.githubusercontent.com/u/44335102?v=4?s=100" width="100px;" alt="Rob"/><br /><sub><b>Rob</b></sub></a><br /><a href="https://github.com/beauraines/rtm-api/commits?author=pro-sumer" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
