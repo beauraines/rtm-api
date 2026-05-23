@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.5](https://github.com/beauraines/rtm-api/compare/v1.15.3...v1.15.5) (2026-05-23)
+
+
+### Bug Fixes
+
+* **deps:** bump brace-expansion ([#95](https://github.com/beauraines/rtm-api/issues/95)) ([6f90cad](https://github.com/beauraines/rtm-api/commit/6f90cadca8ea09644edb122920a22befc66cb443)), closes [#103](https://github.com/beauraines/rtm-api/issues/103) [#101](https://github.com/beauraines/rtm-api/issues/101) [#102](https://github.com/beauraines/rtm-api/issues/102) [#101](https://github.com/beauraines/rtm-api/issues/101) [#103](https://github.com/beauraines/rtm-api/issues/103) [#101](https://github.com/beauraines/rtm-api/issues/101) [#102](https://github.com/beauraines/rtm-api/issues/102) [#101](https://github.com/beauraines/rtm-api/issues/101)
+* **deps:** bump lodash from 4.17.23 to 4.18.1 ([#90](https://github.com/beauraines/rtm-api/issues/90)) ([7dc0097](https://github.com/beauraines/rtm-api/commit/7dc00975a7bb2a489eba2be8c77c8d1a74b11fa7)), closes [/redirect.github.com/lodash/lodash/issues/6167#issuecomment-4165269769](https://github.com/beauraines//redirect.github.com/lodash/lodash/issues/6167/issues/issuecomment-4165269769) [lodash/lodash#6167](https://github.com/lodash/lodash/issues/6167) [#6099](https://github.com/beauraines/rtm-api/issues/6099) [#6115](https://github.com/beauraines/rtm-api/issues/6115) [#6090](https://github.com/beauraines/rtm-api/issues/6090) [#6177](https://github.com/beauraines/rtm-api/issues/6177) [#6170](https://github.com/beauraines/rtm-api/issues/6170) [#6165](https://github.com/beauraines/rtm-api/issues/6165) [#6161](https://github.com/beauraines/rtm-api/issues/6161) [#6153](https://github.com/beauraines/rtm-api/issues/6153) [#6137](https://github.com/beauraines/rtm-api/issues/6137)
+
 ### [1.15.3](https://github.com/beauraines/rtm-api/compare/v1.15.2...v1.15.3) (2026-05-23)
 
 
