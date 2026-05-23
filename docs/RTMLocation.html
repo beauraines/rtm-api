@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>RTMResponse - Documentation</title>
+    <title>RTMLocation - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">RTMResponse</h1>
+    <h1 class="page-title">RTMLocation</h1>
     
 
     
@@ -41,14 +41,15 @@
 <header>
     
         <h2>
-        RTMResponse
+        RTMLocation
         </h2>
         
-            <div class="class-description"><h3>RTM Generic Response</h3>
-<p>This Class represents a generic Response from the RTM API Server.
-The <code>RTMError</code> and <code>RTMSuccess</code> Classes represent the actual failed
-and successful responses from the RTM API Server.</p>
-<p>This Class is extended by the <a href="RTMSuccess.html">RTMSuccess</a> and <a href="RTMError.html">RTMError</a> Classes.</p></div>
+            <div class="class-description"><h3>RTM Location</h3>
+<p>This Class is used to represent the properties of an RTM Location.</p>
+<p>All of the location properties from RTM are directly accessible from this Class.</p>
+<pre class="prettyprint source"><code>let location = new RTMLocation(...);
+let name = location.name;
+</code></pre></div>
         
     
 </header>
@@ -62,7 +63,7 @@ and successful responses from the RTM API Server.</p>
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="RTMResponse"><span class="type-signature"></span>new RTMResponse<span class="signature">(status)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="RTMLocation"><span class="type-signature"></span>new RTMLocation<span class="signature">(props)</span><span class="type-signature"></span></h4>
 
     
 
@@ -74,7 +75,7 @@ and successful responses from the RTM API Server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line14">line 14</a>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -114,8 +115,7 @@ and successful responses from the RTM API Server.</p>
 
 
 <div class="description">
-    <p>Create a new Generic RTM Response with a status of either
-<a href="RTMResponse.html#.STATUS_OK">RTMResponse.STATUS_OK</a> or <a href="RTMResponse.html#.STATUS_FAIL">RTMResponse.STATUS_FAIL</a>.</p>
+    <p>Create a new RTM Location</p>
 </div>
 
 
@@ -153,13 +153,13 @@ and successful responses from the RTM API Server.</p>
 
         <tr>
             
-                <td class="name"><code>status</code></td>
+                <td class="name"><code>props</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
             
@@ -169,7 +169,7 @@ and successful responses from the RTM API Server.</p>
 
             
 
-            <td class="description last"><p>RTM API Status</p></td>
+            <td class="description last"><p>The properties from the RTM API response <code>resp.locations.location</code></p></td>
         </tr>
 
     
@@ -209,7 +209,7 @@ and successful responses from the RTM API Server.</p>
 
         
             
-<h4 class="name" id="isOk"><span class="type-signature"></span>isOk<span class="type-signature"> :boolean</span></h4>
+<h4 class="name" id="address"><span class="type-signature"></span>address<span class="type-signature"> :string</span></h4>
 
 
 
@@ -220,7 +220,7 @@ and successful responses from the RTM API Server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line38">line 38</a>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -260,7 +260,7 @@ and successful responses from the RTM API Server.</p>
 
 
 <div class="description">
-    <p>The success of the RTM Response (ie, is <code>true</code> when status is 'ok')</p>
+    <p>Location Address</p>
 </div>
 
 
@@ -269,7 +269,299 @@ and successful responses from the RTM API Server.</p>
     <ul>
         <li>
             
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Location ID</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="latitude"><span class="type-signature"></span>latitude<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Location Latitude</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="longitude"><span class="type-signature"></span>longitude<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Location Longitude</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :string</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Location Name</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
 
 
         </li>
@@ -293,7 +585,7 @@ and successful responses from the RTM API Server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line46">line 46</a>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -333,7 +625,7 @@ and successful responses from the RTM API Server.</p>
 
 
 <div class="description">
-    <p>The RTM API properties of the Response</p>
+    <p>All of the RTM Location properties</p>
 </div>
 
 
@@ -355,7 +647,7 @@ and successful responses from the RTM API Server.</p>
 
         
             
-<h4 class="name" id="status"><span class="type-signature"></span>status<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="zoom"><span class="type-signature"></span>zoom<span class="type-signature"> :Number</span></h4>
 
 
 
@@ -366,7 +658,7 @@ and successful responses from the RTM API Server.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line30">line 30</a>
+        <a href="location_index.js.html">location/index.js</a>, <a href="location_index.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -406,7 +698,7 @@ and successful responses from the RTM API Server.</p>
 
 
 <div class="description">
-    <p>The RTM Response Status</p>
+    <p>Location Zoom</p>
 </div>
 
 
@@ -415,163 +707,7 @@ and successful responses from the RTM API Server.</p>
     <ul>
         <li>
             
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".STATUS_FAIL"><span class="type-signature">(static) </span>STATUS_FAIL<span class="type-signature"> :string</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line98">line 98</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>fail</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>RTM Status of 'fail' = error</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".STATUS_OK"><span class="type-signature">(static) </span>STATUS_OK<span class="type-signature"> :string</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line91">line 91</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>ok</li>
-        </ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>RTM Status of 'ok' = successful</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
+<span class="param-type">Number</span>
 
 
         </li>
@@ -585,263 +721,6 @@ and successful responses from the RTM API Server.</p>
         
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="has"><span class="type-signature"></span>has<span class="signature">(property)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line61">line 61</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Check if the Response has the specified property</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>property</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Property Name</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="response_response.js.html">response/response.js</a>, <a href="response_response.js.html#line79">line 79</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Get a String representation of the Response</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
     
 
     
