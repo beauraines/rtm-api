@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "pro-sumer",
+      "name": "Rob",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44335102?v=4",
+      "profile": "http://prosumer.dev",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "rtm-api",
+  "projectOwner": "beauraines"
+}
