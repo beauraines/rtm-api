@@ -57,6 +57,19 @@ function get(user, filter, callback) {
     // Save the task indices
     taskIds.save();
 
+    // Compute hasSubtasks by cross-referencing parentTaskId
+    for ( let i = 0; i < rtn.length; i++ ) {
+      if ( rtn[i].parentTaskId !== undefined ) {
+        for ( let j = 0; j < rtn.length; j++ ) {
+          if ( rtn[j].task_id === rtn[i].parentTaskId ) {
+            rtn[j].hasSubtasks = true;
+            rtn[j].subtaskIds.push(rtn[i].task_id);
+            break;
+          }
+        }
+      }
+    }
+
     // Return with the callback
     return callback(null, rtn);
 
@@ -120,6 +133,11 @@ function add(name, props, user, callback) {
     name: name,
     parse: '1'
   };
+
+  // Add parent_task_id if provided (for creating subtasks, Pro accounts only)
+  if ( props.parent_task_id ) {
+    params.parent_task_id = props.parent_task_id;
+  }
 
   // Make the API Request
   user.get('rtm.tasks.add', params, function(err) {
