@@ -11,7 +11,7 @@ const RTMTask = require('../task/index.js');
 /**
  * This module returns the RTM Tasks-related functions for the RTMUser
  * @param {RTMUser} user The RTM User instance
- * @returns {{get: function, add:function, remove: function, complete: function, uncomplete: function, addTags: function, removeTags: function, priority: function, decreasePriority: function, increasePriority: function, move: function, setDueDate: function, postpone: function, setName: function}}
+ * @returns {{get: function, add: function, addSubtask: function, remove: function, complete: function, uncomplete: function, addTags: function, removeTags: function, priority: function, decreasePriority: function, increasePriority: function, move: function, setDueDate: function, postpone: function, setName: function}}
  * @private
  */
 module.exports = function(user) {
@@ -690,6 +690,35 @@ module.exports = function(user) {
 
     });
 
+  };
+
+
+
+  /**
+   * Add a new subtask to an existing Task (Pro accounts only)
+   * @param {int} index Parent Task Index
+   * @param {string} name Subtask Name (can include 'Smart Add' syntax)
+   * @param {object} [props] Task Properties (same as add)
+   * @param {function} callback Callback function(err)
+   * @param {RTMError} callback.err RTM API Error Response, if encountered
+   * @function RTMUser~tasks/addSubtask
+   */
+  rtn.addSubtask = function(index, name, props, callback) {
+    if ( callback === undefined && typeof props === 'function' ) {
+      callback = props;
+      props = {};
+    }
+
+    // Get the parent task's IDs
+    _getTaskInfo(index, function(err, listId, taskSeriesId, taskId) {
+      if ( err ) {
+        return callback(err);
+      }
+
+      // Set parent_task_id and call add
+      props.parent_task_id = taskId;
+      return _tasks.add(name, props, user, callback);
+    });
   };
 
 

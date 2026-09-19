@@ -232,6 +232,18 @@ class RTMTask {
      */
     this.parentTaskId = series.parent_task_id != '' ? parseFloat(series.parent_task_id) : undefined;
 
+    /**
+     * Task has subtasks flag (computed after task list is fetched)
+     * @type {boolean}
+     */
+    this.hasSubtasks = false;
+
+    /**
+     * IDs of subtasks belonging to this task (computed after task list is fetched)
+     * @type {number[]}
+     */
+    this.subtaskIds = [];
+
 
   }
 
