@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.6](https://github.com/beauraines/rtm-api/compare/v1.15.5...v1.15.6) (2026-10-17)
+
+
+### Bug Fixes
+
+* **deps:** bump handlebars from 4.7.9 to 4.7.10 ([#111](https://github.com/beauraines/rtm-api/issues/111)) ([fb076a0](https://github.com/beauraines/rtm-api/commit/fb076a0f06da474297799e8f402250f907a38f68))
+
 ### [1.15.5](https://github.com/beauraines/rtm-api/compare/v1.15.3...v1.15.5) (2026-05-23)
 
 
